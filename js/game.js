@@ -4,6 +4,14 @@ var curId = 0;
 var entities = {};
 var EtoC = {};
 var CtoE = {};
+function getNameOfC(c) {
+  if('fqn' in c) {
+    var n = c;
+  } else {
+    var n = c.name ? c.name : c;
+  }
+  return n;
+}
 
 var game = {
 
@@ -12,7 +20,10 @@ var game = {
     },
 
     EtoC: EtoC,
-    CtoE: CtoE,
+  CtoE: CtoE,
+  getCtoE: function() {
+    return CtoE;
+  },
 
     nextId: function() {
         return curId++;
@@ -30,7 +41,8 @@ var game = {
   	},
 
     as: function(ent, c) {
-        var n = c.name ? c.name : c;
+//         var n = c.name ? c.name : c;
+      var n = getNameOfC(c);
         return EtoC[ent][n];
     },
 
@@ -47,13 +59,13 @@ var game = {
     },
 
     remC: function(ent, c) {
-        var n = c.name ? c.name : c;
+      var n = getNameOfC(c);
       	if(EtoC[ent]) delete EtoC[ent][n];
         if(CtoE[n]) delete CtoE[n][ent];
     },
 
     allE: function(c) {
-        var n = c.name ? c.name : c;
+      var n = getNameOfC(c);
         return Object.keys(CtoE[n] || {});
     },
 
