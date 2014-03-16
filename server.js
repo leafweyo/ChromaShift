@@ -97,21 +97,21 @@ function prune() {
 
 function match() {
 
-  if(Object.keys(pool).length == 0 
-     || Object.keys(games).length >= gameNumberThreshold) { process.nextTick(match); return;  }
+  if(Object.keys(pool).length == 0
+     || Object.keys(games).length >= gameNumberThreshold) { setImmediate(match); return;  }
 
   prune();
 
   for(var i in pool) {
     var dude = pool[i];
     var other = findOpposite(dude);
-    console.log
+    console.log();
     if(other) {
       console.log("making a game");
       makeGame(dude, other);
       console.log("made a game");
     }
-    return process.nextTick(match); //try matching all the time
+    return setImmediate(match); //try matching all the time
   }
 }
 
@@ -146,6 +146,7 @@ function removeFromGame(g, me) {
 }
 
 io.sockets.on('connection', function (socket) {
+    console.log("** conn coming**");
   var me = {id: socket.id, socket: socket, color: nextColor()};
   socket.on("match", function() {
     queue(me);
