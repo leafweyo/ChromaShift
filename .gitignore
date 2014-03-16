@@ -1,5 +1,3 @@
-resources/tmp/
-js/generated/
-*.jar
-*.class
+/resources/tmp/
+/js/generated/
 .lein-repl-history
