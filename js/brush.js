@@ -5,7 +5,7 @@
         return {
             rect: function(obj, noFill) {
                 ctx.beginPath();
-                ctx.rect(obj["\ufdd0'x"], obj["\ufdd0'y"], obj["\ufdd0'w"], obj["\ufdd0'h"]);
+                ctx.rect(obj[":x"], obj[":y"], obj[":w"], obj[":h"]);
                 ctx.closePath();
                 if(!noFill) {
                     ctx.fill();
@@ -15,7 +15,7 @@
 
             circle: function(obj, noFill) {
                 ctx.beginPath();
-                ctx.arc(obj["\ufdd0'x"], obj["\ufdd0'y"], obj["\ufdd0'r"], 0, Math.PI * 2, true);
+                ctx.arc(obj[":x"], obj[":y"], obj[":r"], 0, Math.PI * 2, true);
                 ctx.closePath();
                 if(!noFill) {
                     ctx.fill();
@@ -24,7 +24,7 @@
 
             halfCircle: function(obj, dir, noFill) {
                 ctx.beginPath();
-                ctx.arc(obj["\ufdd0'x"], obj["\ufdd0'y"], obj["\ufdd0'r"], dir * Math.PI/2, dir * Math.PI * 1.5, true);
+                ctx.arc(obj[":x"], obj[":y"], obj[":r"], dir * Math.PI/2, dir * Math.PI * 1.5, true);
                 if(!noFill) {
                     ctx.fill();
                 }
@@ -57,7 +57,7 @@
             },
 
             text: function(obj, text) {
-                ctx.fillText(text, obj["\ufdd0'x"], obj["\ufdd0'y"]);
+                ctx.fillText(text, obj[":x"], obj[":y"]);
                 return this;
             },
 
@@ -67,7 +67,7 @@
             },
 
             clearRect: function(obj) {
-                ctx.clearRect(0,0,obj["\ufdd0'w"],obj["\ufdd0'h"]);
+                ctx.clearRect(0,0,obj[":w"],obj[":h"]);
                 return this;
             },
 
@@ -77,17 +77,17 @@
             },
 
           	image: function(img, obj) {
-              ctx.drawImage(img, obj["\ufdd0'x"], obj["\ufdd0'y"]);
+              ctx.drawImage(img, obj[":x"], obj[":y"]);
               return this;
           	},
 
           	clippedImage: function(img, x, y, w, h, obj) {
-              ctx.drawImage(img, x, y, w, h, obj["\ufdd0'x"], obj["\ufdd0'y"], w, h);
+              ctx.drawImage(img, x, y, w, h, obj[":x"], obj[":y"], w, h);
               return this;
           	},
 
             translate: function(obj) {
-                ctx.translate(obj["\ufdd0'x"], obj["\ufdd0'y"]);
+                ctx.translate(obj[":x"], obj[":y"]);
                 return this;
             },
 
