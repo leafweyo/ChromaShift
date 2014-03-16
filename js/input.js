@@ -2,12 +2,12 @@
 
     var active = {};
     var keys = {
-        "\ufdd0'left": 37,
-        "\ufdd0'up": 38,
-        "\ufdd0'right": 39,
-        "\ufdd0'down": 40,
-        "\ufdd0'z": 90,
-        "\ufdd0'space": 32
+        ":left": 37,
+        ":up": 38,
+        ":right": 39,
+        ":down": 40,
+        ":z": 90,
+        ":space": 32
     };
   var capture = {
     37: true,
